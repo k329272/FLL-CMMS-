@@ -1,0 +1,34 @@
+from pybricks.pupdevices import UltrasonicSensor
+from pybricks.pupdevices import Motor
+from pybricks.parameters import Port, Direction
+from pybricks.parameters import Button
+from pybricks.robotics import DriveBase
+from pybricks.hubs import PrimeHub
+from pybricks.tools import wait
+system.name("Rooster")
+if (system.reset_reason() = 2):
+    print("Rebooting from error")
+print("Booting")
+print("Battery voltage: " + str(battery.voltage()) + " mV")
+print("Battery current: " + str(battery.current()) + " mA")
+if charger.connected():
+    if (charger.status() = 1):
+        print("Charging")
+    else if (charger.status() = 2):
+        print("Battery full")
+    else:
+        print("Error!")
+Dist = UltrasonicSensor(Port.E)
+ArmA = Motor(Port.D)
+ArmB = Motor(Port.F)
+Color = ColorSensor(Port.C)
+Color.lights.off()
+left_motor = Motor(Port.A, Direction.COUNTERCLOCKWISE)
+right_motor = Motor(Port.B)
+drive_base = DriveBase(left_motor, right_motor, wheel_diameter=89.231, axle_track=100)
+drive_base.use_gyro(True)
+light.blink(color.red, 0.5)
+lights.on(1, 1, 0, 0)
+def turnArm(Arm1, Arm2):
+    ArmA.run_target(250, Arm1)
+    ArmB.run_target()
